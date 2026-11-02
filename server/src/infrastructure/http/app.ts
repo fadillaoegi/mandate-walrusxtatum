@@ -170,6 +170,9 @@ export function createApp(cfg: Config, c: Container) {
     "/api/demo/reset",
     wrap(async (_req, res) => {
       // Nothing is deleted from Walrus: the next run simply uses a fresh namespace.
+      // A fresh run also switches the demo controls off, so nothing leaks into the next rehearsal.
+      c.merchantControl.overchargeNext = false;
+      c.demoControl.setFailNext(false);
       res.json({ namespace: await c.app.reset() });
     }),
   );

@@ -51,7 +51,18 @@ All keys remain strictly in local `.env` (git-ignored). Below are the public, no
   - **Settlement Digest (`sui:testnet`):** `7Lszdc8FS4pLY6EQN9hUxGxc7Q6pKZNiXLfu91BWshwn` (settled via Tatum Testnet gRPC in 1026 ms)
   - **Independent Tatum gRPC Read:** `success` in **193 ms**.
 
-> **Scope note:** The full 6-step guided dashboard flow was verified end-to-end on Walrus Mainnet paired with the deterministic local ledger, and x402 Sui Testnet settlement + Tatum verification was proven via the controlled `$0.08` USDC transaction above. Running the full 6-step UI scenario on `PAYMENT_RAIL=x402-testnet` is supported by the codebase (spending `$0.75` Testnet USDC across 3 approved items) and documented in [docs/TESTNET.md](TESTNET.md).
+### D. Full live guided demo (Walrus Mainnet + x402 on Sui Testnet via Tatum) — recorded for the demo video
+- **Configuration:** `MEMORY_MODE=walrus`, `PAYMENT_RAIL=x402-testnet` (all six guided steps, driven through the dashboard UI).
+- **Walrus Mainnet namespace:** `mandate-demo-run10` — **13 memories stored**, 0 failed (rules, verdicts, vendor flag, receipts, on-chain statuses).
+- **Learning shown live:** session 2 and a second agent decided without the owner: duplicate, trusted vendor, flagged vendor, learned price ceiling, blocked vendor, per-item limit.
+- **x402 payments settled on Sui Testnet, each re-read through Tatum gRPC (`verified`):**
+  - `59NgFiCKYVVikE9peZUd9a1tDuAKSMLAT5zRiYAiSznE` — OpenStats, $0.20 (owner-approved)
+  - `9RtUZS951SYk9jvDK1EAtELBttANt3SoNPDaZqaCXEjv` — OpenStats, $0.25 (approved from memory, new session)
+  - `25DNNMuDFvjoTshpsQaSCrQD4NSuKGwkVW4c2VPwQsGR` — OpenStats, $0.30 (Shopping Agent, from shared memory)
+  - `Ht7Du4hHcm3e9DGA2bDMNttdjuPK3BedPFBYDM9aYdeE` — OpenStats, $0.15 (after a greedy 402 asking $0.25 was refused before signing)
+- Total: $0.90 Testnet USDC. Explorer: `https://suiscan.xyz/testnet/tx/<digest>`.
+
+> **Scope note:** Payments are on **Sui Testnet** (test USDC), not Mainnet. Memories are on **Walrus Mainnet**. The demo merchant and its vendors are ours and labelled as a demo.
 
 ---
 

@@ -70,6 +70,9 @@ const STEPS: Step[] = [
   },
 ];
 
+/** ?video=1 hides the narration hints while recording the demo video. */
+const VIDEO_MODE = typeof location !== "undefined" && new URLSearchParams(location.search).has("video");
+
 const HIDE_KEY = "mandate-guide-hidden";
 const readHidden = () => {
   try {
@@ -153,7 +156,7 @@ export function GuidedDemo({ state }: { state: AppState }) {
             </p>
             <p className="mt-1"><span className="text-dim">Do:</span> {step.todo}</p>
             <p className="mt-1"><span className="text-dim">Watch:</span> {step.watch}</p>
-            <p className="mt-1 text-sky"><span className="text-dim">Say:</span> “{step.say}”</p>
+            {!VIDEO_MODE && <p className="mt-1 text-sky"><span className="text-dim">Say:</span> “{step.say}”</p>}
           </div>
           <div className="flex items-start gap-3">
             <button className="px-btn px-btn-coin" onClick={() => spotlight(step.target)}>Show me</button>

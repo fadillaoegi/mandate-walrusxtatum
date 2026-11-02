@@ -3,6 +3,10 @@
   "private": true,
   "description": "Portable AI agent spending rules on Walrus Memory with on-chain truth verified via Tatum and x402 payments on Sui.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fadillaoegi/mandate-walrusxtatum.git"
+  },
   "engines": {
     "node": ">=24"
   },
