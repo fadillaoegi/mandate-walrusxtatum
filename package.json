@@ -1,0 +1,22 @@
+{
+  "name": "mandate",
+  "private": true,
+  "description": "Portable AI agent spending rules on Walrus Memory with on-chain truth verified via Tatum and x402 payments on Sui.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=24"
+  },
+  "workspaces": [
+    "server",
+    "web"
+  ],
+  "scripts": {
+    "dev:server": "npm run dev -w server",
+    "dev:web": "npm run dev -w web",
+    "test": "npm test -w server",
+    "typecheck": "npm run typecheck -w server && npm run typecheck -w web",
+    "db:up": "docker compose up -d postgres",
+    "build": "npm run build -w server && npm run build -w web",
+    "start": "node --env-file-if-exists=.env server/dist/main.js"
+  }
+}

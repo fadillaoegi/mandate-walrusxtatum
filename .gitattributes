@@ -1,0 +1,36 @@
+# Normalize text files to LF line endings across platforms
+* text=auto eol=lf
+
+# Source code, scripts, vector graphics & configs
+*.ts text eol=lf
+*.tsx text eol=lf
+*.js text eol=lf
+*.mjs text eol=lf
+*.cjs text eol=lf
+*.json text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+*.svg text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.sql text eol=lf
+Dockerfile text eol=lf
+LICENSE text eol=lf
+.env.example text eol=lf
+.gitignore text eol=lf
+.dockerignore text eol=lf
+.gitattributes text eol=lf
+
+# Collapse lockfile diffs on GitHub
+package-lock.json linguist-generated=true
+
+# Binary assets (if documentation screenshots, icons, or fonts are added)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.woff binary
+*.woff2 binary

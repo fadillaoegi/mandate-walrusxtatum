@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+@theme {
+  --font-pixel: "Press Start 2P", ui-monospace, monospace;
+  /* Body text: a clean mono keeps the retro feel but reads well in long sentences and on video. */
+  --font-body: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --color-night: #141428;
+  --color-panel: #1f1f3d;
+  --color-panel-2: #2a2a52;
+  --color-cream: #f4f0e6;
+  --color-dim: #a9a4c4;
+  --color-coin: #ffd23f;
+  --color-leaf: #3ddc84;
+  --color-ruby: #ff5c6c;
+  --color-sky: #5cc8ff;
+  --color-grape: #b48cff;
+}
+
+html {
+  background: var(--color-night);
+  color: var(--color-cream);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--color-night);
+  /* faint pixel grid */
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+/* Box with notched pixel corners and a hard drop shadow. */
+.px-box {
+  --b: var(--color-cream);
+  background: var(--color-panel);
+  box-shadow:
+    0 -4px 0 0 var(--b),
+    0 4px 0 0 var(--b),
+    -4px 0 0 0 var(--b),
+    4px 0 0 0 var(--b),
+    8px 8px 0 0 rgba(0, 0, 0, 0.55);
+}
+
+.px-btn {
+  --b: var(--color-cream);
+  --bg: var(--color-panel-2);
+  font-family: var(--font-pixel);
+  font-size: 11px;
+  line-height: 1.2;
+  padding: 11px 14px;
+  -webkit-font-smoothing: none;
+  background: var(--bg);
+  color: var(--color-cream);
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow:
+    0 -3px 0 0 var(--b),
+    0 3px 0 0 var(--b),
+    -3px 0 0 0 var(--b),
+    3px 0 0 0 var(--b),
+    inset -3px -3px 0 0 rgba(0, 0, 0, 0.35);
+  transition: transform 60ms steps(1);
+}
+.px-btn:hover { filter: brightness(1.15); }
+.px-btn:active { transform: translate(2px, 2px); box-shadow: 0 -3px 0 0 var(--b), 0 3px 0 0 var(--b), -3px 0 0 0 var(--b), 3px 0 0 0 var(--b), inset 3px 3px 0 0 rgba(0, 0, 0, 0.35); }
+.px-btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+.px-btn:focus-visible, .px-input:focus-visible { outline: 3px dashed var(--color-coin); outline-offset: 5px; }
+/* Every other interactive element gets a visible keyboard focus too. */
+a:focus-visible, button:not(.px-btn):focus-visible, input[type="checkbox"]:focus-visible { outline: 2px dashed var(--color-coin); outline-offset: 3px; }
+.px-btn-coin { --bg: #b8860b; --b: var(--color-coin); }
+.px-btn-leaf { --bg: #1d7a4a; --b: var(--color-leaf); }
+.px-btn-ruby { --bg: #9b2c3a; --b: var(--color-ruby); }
+
+.px-input {
+  font-family: var(--font-body);
+  font-size: 15px;
+  background: var(--color-night);
+  color: var(--color-cream);
+  padding: 6px 10px;
+  width: 100%;
+  box-shadow: 0 -2px 0 0 var(--color-dim), 0 2px 0 0 var(--color-dim), -2px 0 0 0 var(--color-dim), 2px 0 0 0 var(--color-dim);
+}
+
+/* Pixel font only for titles, buttons and badges, never below 11px. */
+.px-title { font-family: var(--font-pixel); text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.4; -webkit-font-smoothing: none; }
+
+/* Money is the point of the product: big, bold, easy to scan. */
+.px-money { font-weight: 700; font-size: 1.15em; color: var(--color-coin); font-variant-numeric: tabular-nums; }
+
+.px-id { font-size: 13px; color: var(--color-dim); }
+
+.px-blink { animation: blink 1s steps(2, start) infinite; }
+@keyframes blink { to { visibility: hidden; } }
+
+.px-pop { animation: pop 240ms steps(3) both; }
+@keyframes pop { from { transform: translateY(-6px); opacity: 0; } to { transform: none; opacity: 1; } }
+
+/* Guided demo: briefly spotlight the panel the current step talks about. */
+.px-spot { animation: spot 0.5s steps(2, start) 5; outline: 4px dashed var(--color-coin); outline-offset: 8px; }
+@keyframes spot { 50% { outline-color: transparent; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .px-blink, .px-pop, .px-spot { animation: none; }
+}
+
+input[type="checkbox"] { accent-color: var(--color-coin); width: 16px; height: 16px; }
