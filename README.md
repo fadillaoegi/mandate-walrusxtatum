@@ -6,7 +6,8 @@ Built for **Total Recall — Tatum × Walrus** · Track: **Consumer Finance Apps
 
 - **Verification & On-Chain Evidence:** [docs/VERIFICATION.md](docs/VERIFICATION.md)
 - **Sui Testnet x402 Payment Runbook:** [docs/TESTNET.md](docs/TESTNET.md)
-- **Demo Video (2–3 min) · Blog Post · Live Demo:** *Links to be added prior to final submission*
+- **Demo Video (2:39):** [youtu.be/sRa2cWtP8ok](https://youtu.be/sRa2cWtP8ok) — live run on Walrus Mainnet + x402 on Sui Testnet via Tatum
+- **Blog Post · Live Demo:** *links to be added prior to final submission*
 
 ## Background
 
